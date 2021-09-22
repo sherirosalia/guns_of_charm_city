@@ -2,6 +2,9 @@
 __pycache__/
 *.py[cod]
 *$py.class
+config.js
+.git
+.ipynb_checkpoints
 
 # C extensions
 *.so
