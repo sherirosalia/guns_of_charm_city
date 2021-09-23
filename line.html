@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charts</title>
+    <script type="text/javascript" src="https://d3js.org/d3.v6.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+</head>
+<body>
+    <div>
+        <h2>Bar Chart</h2>
+        <div id="line"></div>
+    </div>
+
+
+<script>
+
+function makeplot() {
+    Plotly.d3.csv("years_by_count.csv", function(data){ processData(data) } );
+
+};
+
+function processData(allRows) {
+
+  console.log(allRows);
+  var x = [];
+  var y = [];
+
+  for (var i=0; i<allRows.length; i++) {
+    row = allRows[i];
+    x.push( row['year'] );
+    y.push( row['RowID'] );
+  }
+  console.log( 'X',x, 'Y',y);
+  makePlotly( x, y);
+}
+
+function makePlotly( x, y,  ){
+  var plotDiv = document.getElementById('line');
+  var traces = [{
+    x: x,
+    y: y,
+  }];
+
+  Plotly.newPlot('line', traces,
+    {title: 'Charm City Crimes over Time'});
+};
+  makeplot();
+
+</script>
+<script  src="https://d3js.org/d3.v6.js"></script>
+</body>
+</html>

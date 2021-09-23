@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charts</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <div>
+        <h2>Bar Chart</h2>
+        <div id="graph"></div>
+    </div>
+
+
+<script>
+
+function makeplot() {
+  Plotly.d3.csv("districtsCount.csv", function(data){ processData(data) } );
+
+};
+  
+function processData(allRows) {
+
+//   console.log(allRows);
+  var x = [], y = [];
+
+  for (var i=0; i<allRows.length; i++) {
+    row = allRows[i];
+    x.push( row['District'] );
+    y.push( row['RowID'] );
+  }
+  console.log( 'X',x, 'Y',y,  );
+  makePlotly( x, y, );
+}
+
+function makePlotly( x, y,  ){
+  var plotDiv = document.getElementById("graph");
+  var traces = [{
+    x: x, 
+    y: y,
+    type: 'bar'
+  }];
+
+  Plotly.newPlot('graph', traces, 
+    {title: 'Count of Gun Offenses by District'});
+};
+  makeplot();
+
+
+
+</script>
+</body>
+</html>
