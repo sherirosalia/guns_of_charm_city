@@ -73,6 +73,25 @@ text-transform: none;
 
 #line {
     width: auto;
-    height: 450px;    
+    height: 450px;   
+
 }
+/* <a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 67.8134%;"></a> */
+#slider .ui-slider-handle {
+    outline: 0;
+    background: purple;
+    border-radius: 50%;
+    top: -.6em;
+  }
+  
+  #slider.ui-slider-horizontal {
+    top: 1em;
+    left: 5%;
+    height: .1em;
+    width: 90%;
+    border: none;
+    background: #ccc;
+  }
+
+/* <i class="fas fa-skull-crossbones"></i> */
 
