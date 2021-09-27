@@ -1,11 +1,8 @@
 // zips_by_count.csv
 
-
-
-
 // set the dimensions and margins of the graph
-const width = 600
-const height = 600
+const width = 650
+const height = 500
 
 // append the svg object to the body of the page
 const svg = d3.select("#my_dataviz")
@@ -14,21 +11,21 @@ const svg = d3.select("#my_dataviz")
     .attr("height", height)
 
 // Read data
-d3.csv("zips_by_count.csv").then( function(data) {
-    console.log(data)
+d3.csv("folders/data/zips_by_count.csv").then( function(data) {
+    // console.log(data)
 
   // Filter a bit the data -> more than 1 million inhabitants
 //   data = data.filter(function(d){ return d.value>10000000 })
 
-//   Color palette for continents?
+//   Color palette for districts
   const color = d3.scaleOrdinal()
     .domain(["Southwest", "Western", "Southeast", "Southern", "Central", "Eastern", "Northeast", "Northern", "Northwest"])    
     .range(d3.schemeSet3);
 
-  // Size scale for countries
+  // Size scale for districts
   const size = d3.scaleLinear()
     .domain([0, 285])
-    .range([10,85])  // circle will be between 7 and 55 px wide
+    .range([10,85])  // circle will be between 10 and 85 px wide
 
   // create a tooltip
   const Tooltip = d3.select("#my_dataviz")

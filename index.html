@@ -4,54 +4,217 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- leaflet css -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-    crossorigin=""/>
-     <!--  leaflet.js -->
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-    crossorigin=""></script>
-    <!-- <script src="map.js"></script> -->
 
-    <style>
-        html, body {
-			height: 100%;
-			margin: 0;
-		}
-		#map {
-			width: auto;
-			height: 500px;
-		}
-    </style>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Document</title>
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+    crossorigin="anonymous">
+
+    <link rel="stylesheet" href="folders/css/styles.css" crossorigin="anonymous">  
+    
+
+    <!-- leaflet css -->
+    <link rel="stylesheet" type="text/css" href="//cdn.leafletjs.com/leaflet-0.7/leaflet.css" />
+
+      <!--  jquery ui css -->
+      <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" /> 
+
 
 </head>
 <body>
-    <div>
-    <H1>Zip Bubbles</H1>
-    </div>
-    <div id="my_dataviz"></div>
-    <div>
-        <p>Mapping tile courtesy of: <code>© Mapbox</code></p>
-    </div>
-    <div>
-        <H1>Gun Offences Map</H1>
-    </div>
-    <div id="map"></div>
-    <div>
-        <p>Mapping tile courtesy of: <code>© Mapbox</code></p>
-    </div>
+  <div class="jumbotron bg-dark" id="jumbo">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-white">
+                <h1>Charm City Crimes  <i class="fas fa-gavel fa-1x"></i> </h1>
+                <h5>Gun offense records from Baltimore Maryland</h5>
+            </div>
 
-<!-- D3 -->
-  <!-- Icons -->
-<script type="text/javascript" src="leaflet.extra-markers.min.js"></script>
-<script type="text/javascript" src="https://d3js.org/d3.v6.js"></script>
-<script type="text/javascript" src="config.js"></script>
-<script type="text/javascript" src="logic.js"></script>
-<script type="text/javascript" src="bubble.js"></script>
-<!-- <script src="data.js"></script> -->
+        </div>
+      </div>
+</div>  <!-- end of jumbotron -->
+<!-- intro paragraph -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 text-center">
+      <h1>Who is toting guns in Charm City?</h1>
+      <p>The City of Baltimore Maryland, otherwise known as "Charm City" keeps tabs on gun offenders and released records relating to almost 3,000 offenders via Data.Gov. The site description explains that the dataset <a href="https://catalog.data.gov/dataset/gunoffenders" target="blank">(download link)</a> "represents the Gun Offender Registry for persons convicted of at least one gun-related offense and are required to register their name and address with police; also required to check-in with police every 6 months for three years".  </p>
+
+      <p>Please join me to explore some of the findings in a visual journey below.</p>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+
+</div>  <!-- end of intro paragraph div -->
+
+<!-- leaflet map -->
+<div class="container">
+  <div class="row">
+      <div class="col-md-12">
+          <h3>Where do they live?</h3>
+          <p>Use the timeline slider in the upper right hand corner of the map to see reported addresses for registered offenders over the last 13 years.</p>
+      </div>
+  </div>
+</div>
+
+<div class="container">
+    <div class="row">        
+        <div class="col-md-12" id='map'></div>
+    </div>
+</div> <!-- end of leaflet map div -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Demographic profile</h3>
+      <p>Analysis shows that of the approximately 2750 offenders, 2,688 are male, the youngest 15, oldest 80 and a median age of 26. The majority identified as black.</p>
+    </div>
+  </div> <!-- end of demographic row -->
+</div> <!-- end of demographic container -->
+
+<div class="container">
+  <div class="row">    
+    <div class="col-md-12">
+      <h3>Count by zipcode</h3>
+      <p>The zipcodes with the highest counts of gun offender inhabitants are either approaching or tilt over the 200 count line. Moving the bubbles around in the visualization below will also display a tooltip with zipcode information</p>
+    </div>
+  </div>  <!-- end of row -->
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8" id="my_dataviz"></div> <!-- bubble -->
+    <div class="col-md-2"></div>
+  </div> <!-- end of row -->
+
+  <div class="row">
     
+    <div class="col-md-12">
+      <h3>December 26</h3>
+      <p>Initially, the scatter plot produced below suggested that the day after Christmas was a wild card for reported offenses, but on deeper inspection, this seems to only be true for the years of 2018 and 2019. Perhaps this reflects some reason related to a clerical issue, but it would be interesting to be able to find out why especially in light of the fact that this was only for two of 12 years that included Christmas (2021 Christmas has not happened as of the day of this writing). Maybe law enforcement increased neighborhood sweeps?</p>
+
+    </div>
+  </div> <!-- end of row -->
+  <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <img src="folders/images/plot.jpeg" class="img-fluid" alt="Responsive image" alt="december 26 scatter plot" id='dec26'>
+        </div>
+        <div class="col-md-2"></div>
+    </div> <!-- end of row -->
+  </div> <!-- end of container-->
+
+  <div class="container">
+    <div class="row">    
+      <div class="col-md-12">
+        <h3>Graphing Districts by Year</h3>
+        <p>Double click the legend on the right to isolate Districts for an analysis by year.</p>
+      </div>
+    </div>  <!-- end of row -->
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10" id="graph"></div> <!-- bubble -->
+      <div class="col-md-1"></div>
+    </div> <!-- end of row -->
+  </div>
+
+  <div class="container">
+    <div class="row">    
+      <div class="col-md-12">
+        <h3>Crimes Over time</h3>
+        <p>It seems that there has been a sharp increase in the number of registered offenders with a decline that may suggest a Covid-19 related decline as seen in the line chart below. If the pandemic is related to the decline, one has to wonder if there were actually less offenses or if this is actually related to government closures interfering with reportin. Other possiblilities include the fact that mobility was restricted, bars were shut down and the increased economic benefits offered by the government in response to shut downs. Perhaps all or some of those factors contributed to a decrease in firearm violations</p>
+      </div>
+    </div>  <!-- end of row -->
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10" id="line"></div> <!-- bubble -->
+      <div class="col-md-1"></div>
+    </div> <!-- end of row -->
+  </div>
+
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8"></div>
+      <h3>Dreams of supplemental data</h3>
+      <p>What little nuggets of insights could we get with more information? Unfortunately the nature of the offenses are not listed as part of this dataset. Are these simple gun possession violations or was a serious crime involved? Sex offender statistics, how funding is distributed in the community, educational access, employment statistics and proximity to to mental health services are only few potential resources that could help to "flesh out" the information gleaned during the analytical process that produced the above insights with the hope of telling a "human story" of "why" these crimes happened and "how" to fix it.</p>
+    <div class="col-md-2"></div>
+    </div><!-- end of row-->
+    
+  </div> <!-- end of ROW dist year by count-->
+
+
+    <!-- <div class="col-md-12" id="line"></div> -->
+
+  
+<!-- <div class="container-fluid">
+  <div class="row">
+    <div id="graph" class="col-md-12"></div>
+    <div class="col-md-12" id='graph'></div> -->
+   
+  <!-- </div> -->
+<!-- </div> --> 
+
+
+
+
+
+<footer class="bg-dark text-white page-footer ">
+  <div class="text-center py-3">
+      <p class='text-white'>2021 Copyright  &copy;    Sheri Rosalia <a href="http://www.sherirosalia.com"><img src ="folders/images/rose2.png"  style="margin-top: .25em; height: 2em; width:2em;" alt="rose logo"></a></p>
+  </div>  
+
+</footer>   
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- jquery  -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- d3 v 6 -->
+<script type="text/javascript" src="https://d3js.org/d3.v6.js"></script>
+<!-- leaflet  -->
+<script src="//cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+<!-- jquery ajax  -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<!-- plotly js -->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<!-- external js and data files  -->
+<!-- config -->
+<script type="text/javascript" src="folders/js/config.js"></script>
+<!-- leaflet map -->
+<script type="text/javascript" src="folders/js/map.js"></script>
+<!-- slider control for map -->
+<script type="text/javascript" src="folders/js/SliderControl.js"></script>
+<!-- geojson data for map -->
+<script type="text/javascript" src="folders/data/gun_data.js"></script>
+<!-- district bar graph -->
+<script type="text/javascript" src="folders/js/district_year.js"></script>
+<!-- year line graph -->
+<script type="text/javascript" src="folders/js/line.js"></script>
+<!-- d3 bubble plot -->
+<script type="text/javascript" src="folders/js/bubble.js"></script>
+<!-- jquery ui js -->
+<script src="//code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+
+
+
+
+
+
+
     
 </body>
 
