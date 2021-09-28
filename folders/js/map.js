@@ -13,10 +13,10 @@ $( document ).ready(function() {
         accessToken: acccessToken
         
         });
-
+        
     // add map location
     const map = L.map("map",
-        {   center: [39.2904, -76.6122],
+        {   center: [39.3464, -76.5475],
             zoom: 13,
 
         })

@@ -2,7 +2,8 @@ body {
     margin: 0;
     padding: 0;
     height: 100%;
-    font-family:  "Palatino Linotype", "Book Antiqua", Palatino, serif;;
+    font-family:  "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-size: x-large;
 }
 footer {
     margin-top: 3em;
@@ -77,21 +78,77 @@ text-transform: none;
 
 }
 /* <a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 67.8134%;"></a> */
-#slider .ui-slider-handle {
-    outline: 0;
-    background: purple;
-    border-radius: 50%;
-    top: -.6em;
-  }
-  
-  #slider.ui-slider-horizontal {
-    top: 1em;
-    left: 5%;
-    height: .1em;
+.wrap {
+    padding: 50px 10px;
+}
+#nlVal {
+	display:inline-block;
+}
+#slider {
     width: 90%;
+    height: 10px;
+    background: lightgrey;
+    border-radius: 50px;
+}
+
+#slider label {
+    position: absolute;
+    width: 20px;
+    margin-top: 20px;
+    margin-left: -10px;
+    text-align:left;
+    font-size: 13px;
+}
+
+#slider label:last-of-type::after {
+    content: '+';
+}
+
+.ui-slider-handle.ui-state-default.ui-corner-all {
+    border-radius: 100%;
+    background: black;
+    border: 6px solid red;
+    width: 20px;
+    height: 20px;
+    top: -5px;
+		cursor:grab;
+}
+
+.ui-slider-handle.ui-state-active,
+.ui-slider-handle.ui-state-hover,
+.ui-slider-handle.ui-state-focus {
     border: none;
-    background: #ccc;
-  }
+    outline: 0;
+}
+
+.ui-slider-handle.ui-state-active:after {
+    content: 'miles';
+    position: absolute;
+    top: -40px;
+    left: -19px;
+    background: red;
+    color: white;
+    font-size: .700em;
+    padding: 5px 8px;
+}
+
+.ui-slider-handle.ui-state-active:before {
+    content: '';
+    background: red;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: -20px;
+    transform: rotate(45deg);
+}
+
+span{
+    font-weight: bolder;
+    color: brown;
+    font-size: larger;
+}
+
+
 
 /* <i class="fas fa-skull-crossbones"></i> */
 
