@@ -53,8 +53,9 @@ font-variant: normal;
 text-transform: none;
 }
 #map {
-    width: auto;
+    
     height: 500px;
+    /* position: relative; */
 }
 
 #myDiv {

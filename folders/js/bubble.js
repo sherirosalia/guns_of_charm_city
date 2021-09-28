@@ -1,8 +1,8 @@
 // zips_by_count.csv
 
 // set the dimensions and margins of the graph
-const width = 650
-const height = 500
+const width = auto
+const height = 450
 
 // append the svg object to the body of the page
 const svg = d3.select("#my_dataviz")
