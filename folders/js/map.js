@@ -34,7 +34,7 @@ $( document ).ready(function() {
             const dateLong = feature.properties.CreatedDate.slice(0,10);
             var dateString = JSON.stringify(dateLong);
             var date = JSON.parse(dateString);  
-            console.log(date)          
+            // console.log(date)          
             layer.bindPopup("<h1>" + feature.properties.FullAddress + "</h1><p>Other info: <br> Date: " + date + "</p>");
         }
     });
