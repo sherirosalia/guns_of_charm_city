@@ -23,19 +23,54 @@
       <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" /> 
 
 
+      <script>
+        // var judgeJudy = document.getElementByID('judgeJudy');
+        function judgeJudy() {  
+        document.getElementById('judgeJudy').classList.add("shake"); 
+    }
+    
+      </script>
+    
+      <style>
+        .shake:hover{
+      animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+      transform: translate3d(0, 0, 0);
+      backface-visibility: hidden;
+      perspective: 1000px;
+    }
+    
+    @keyframes shake {
+      10%, 90% {
+        transform: translate3d(-1px, 0, 0);
+      }
+      
+      20%, 80% {
+        transform: translate3d(2px, 0, 0);
+      }
+    
+      30%, 50%, 70% {
+        transform: translate3d(-4px, 0, 0);
+      }
+    
+      40%, 60% {
+        transform: translate3d(4px, 0, 0);
+      }
+    }
+      </style>
+
+
 </head>
 <body>
   <div class="jumbotron bg-dark" id="jumbo">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-white">
-                <h1>Charm City Crimes  <i class="fas fa-gavel fa-1x"></i> </h1>
-                <h5>Gun offense records from Baltimore Maryland</h5>
-            </div>
-
+      <div class="row">
+        <div class="col-md-12 text-white">
+          <h1>Charm City Crimes  <i class="fas fa-gavel fa-1x" id='judgeJudy' onclick="judgeJudy();" ></i> </h1>
+          <h5>Gun offense records from Baltimore Maryland</h5>
         </div>
       </div>
-</div>  <!-- end of jumbotron -->
+    </div>
+  </div>  <!-- end of jumbotron -->
 <!-- intro paragraph -->
 <div class="container">
   <div class="row">
@@ -43,6 +78,8 @@
     <div class="col-md-10 text-center">
       <h1>Who is gun toting in Charm City?</h1>
       <p>The City of Baltimore Maryland, otherwise known as "Charm City" keeps tabs on gun offenders and released records relating to almost 3,000 offenders via Data.Gov. The site description explains that the dataset <a href="https://catalog.data.gov/dataset/gunoffenders" target="blank">(download link)</a> "represents the Gun Offender Registry for persons convicted of at least one gun-related offense and are required to register their name and address with police; also required to check-in with police every 6 months for three years".  </p>
+
+      <p>To see what is "under the hood", the code is on GitHub: <a href="https://github.com/sherirosalia/guns_of_charm_city" target='blank'>Guns of Charm City</a>.</p>
 
       <p>Please join me to explore some of the findings in a visual journey below.</p>
     </div>
@@ -123,8 +160,8 @@
   <div class="container">
     <div class="row">    
       <div class="col-md-12">
-        <h3>Crimes Over time</h3>
-        <p>It seems that there has been a sharp increase in the number of registered offenders with a decline that may suggest a Covid-19 related decline as seen in the line chart below. If the pandemic is related to the decline, one has to wonder if there were actually less offenses or if this is actually related to government closures interfering with reportin. Other possiblilities include the fact that mobility was restricted, bars were shut down and the increased economic benefits offered by the government in response to shut downs. Perhaps all or some of those factors contributed to a decrease in firearm violations</p>
+        <h3>Covid related decline?</h3>
+        <p>As seen in the chart below, a steady and then escalating increase in offenses drops precipitously right around the same time that the US went into lockdown due to the pandemic. <span>If this is causational</span> and not just a simple correlation, one has to wonder why. Was the reason economic? Did the supplemental unemployment benfits take a "bite out of crime"? Alternatively, was reporting and enforcement less robust because of government closures? It is also possible that with eateries, shopping centers and bars shut down there was simply less opportunity for folks to get into trouble. Perhaps all or some of those factors contributed to a decrease in firearm violations</p>
       </div>
     </div>  <!-- end of row -->
     <div class="row">
@@ -145,21 +182,6 @@
     </div><!-- end of row-->
     
   </div> <!-- end of ROW dist year by count-->
-
-
-    <!-- <div class="col-md-12" id="line"></div> -->
-
-  
-<!-- <div class="container-fluid">
-  <div class="row">
-    <div id="graph" class="col-md-12"></div>
-    <div class="col-md-12" id='graph'></div> -->
-   
-  <!-- </div> -->
-<!-- </div> --> 
-
-
-
 
 
 <footer class="bg-dark text-white page-footer ">

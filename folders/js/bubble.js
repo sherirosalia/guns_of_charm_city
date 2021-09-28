@@ -1,7 +1,7 @@
 // zips_by_count.csv
 
 // set the dimensions and margins of the graph
-const width = 650
+const width = 750
 const height = 500
 
 // append the svg object to the body of the page
