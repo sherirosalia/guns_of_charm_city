@@ -53,9 +53,8 @@ font-variant: normal;
 text-transform: none;
 }
 #map {
-    
+    /* width: auto; */
     height: 500px;
-    /* position: relative; */
 }
 
 #myDiv {
@@ -69,12 +68,12 @@ text-transform: none;
 }
 
 #graph {
-    width: auto;
+    /* width: auto; */
     height: 550px;    
 }
 
 #line {
-    width: auto;
+    /* width: auto; */
     height: 450px;   
 
 }
