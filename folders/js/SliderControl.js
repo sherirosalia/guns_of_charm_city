@@ -38,6 +38,7 @@ L.Control.SliderControl = L.Control.extend({
         }
 
         this.options.position = position;
+        console.log(position)
 
         if (map) {
             map.addControl(this);
@@ -103,6 +104,7 @@ L.Control.SliderControl = L.Control.extend({
             if(_options.range) _options.values = [_options.minValue,_options.maxValue];
             else _options.value = _options.maxValue;
         }
+        console.log(_options.maxValue)
         $("#leaflet-slider").slider({
             range: _options.range,
             value: _options.value,
@@ -112,6 +114,7 @@ L.Control.SliderControl = L.Control.extend({
             sameDate: _options.sameDate,
             step: 1,
             slide: function (e, ui) {
+                console.log(ui);
                 var map = _options.map;
                 var fg = L.featureGroup();
                 if(!!_options.markers[ui.value]) {
@@ -139,6 +142,7 @@ L.Control.SliderControl = L.Control.extend({
                         if(_options.markers[i]) map.removeLayer(_options.markers[i]);
                     }
                     if(_options.range){
+                        // console.log(ui.values)
                         // jquery ui using range
                         for (i = ui.values[0]; i <= ui.values[1]; i++){
                            if(_options.markers[i]) {

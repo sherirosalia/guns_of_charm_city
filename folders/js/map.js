@@ -34,7 +34,7 @@ $( document ).ready(function() {
             const dateLong = feature.properties.CreatedDate.slice(0,10);
             var dateString = JSON.stringify(dateLong);
             var date = JSON.parse(dateString);  
-            console.log(date)          
+            // console.log(date)          
             layer.bindPopup("<h1>" + feature.properties.FullAddress + "</h1><p>Other info: <br> Date: " + date + "</p>");
         }
     });
@@ -43,16 +43,30 @@ $( document ).ready(function() {
         position: "topright",
         layer: testlayer,
         range: true,
-        timeAttribute: "CreatedDate"
+        timeAttribute: "CreatedDate",
+        values: [200, 800]
         
 
     });
+
+    
 
     //Make sure to add the slider to the map ;-)
     map.addControl(sliderControl);
 
     //And initialize the slider
     sliderControl.startSlider();
-  
+
+    // THIS IS A HACK TO GET THE SLIDER TO DISPLAY A RANGE OF MARKERS ON LOAD
+    // HELPFUL STACK OVERFLOW: https://stackoverflow.com/questions/1288824/trigger-a-jquery-ui-slider-event
+    $('#leaflet-slider').trigger('slide');
+    // a.ui-slider-handle.ui-state-default.ui-corner-all.ui-state-active
+    // $('.ui-slider-handle.ui-state-default.ui-corner-all').click()
+    slider = $("#leaflet-slider");
+    // console.log(slider)
+
+    slider.slider('option', 'slide').call(slider, null, {value: 200, values:[200,800]});
+
+    // $("#leaflet-slider").slider('values',1,300)
 
 }); // end of script/window onload
