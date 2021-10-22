@@ -4,7 +4,7 @@ $( document ).ready(function() {
     
     // console.log(data[0]);
     let slider = data[0];
-    let acccessToken='pk.eyJ1IjoiY2VyZWphcm9zaW5oYSIsImEiOiJja3VhcmZoYW4wam9kMnVxbGFiZDBiMHFlIn0.JI2UalCseV5N8AdM0Qr7IQ'
+    let acccessToken='pk.eyJ1IjoiY2VyZWphcm9zaW5oYSIsImEiOiJja3YyZjZwcXg4NnJjMzJuenJ5ZW92dmVkIn0.Yn42vIwwkLOepnIbQ-auvw'
     // base map style
     var lightmap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
         attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
